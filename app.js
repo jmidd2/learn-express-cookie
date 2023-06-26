@@ -12,12 +12,13 @@ app.get("/", (req, res) => {
   );
 });
 
-app.get("/login/:name", (req, res) => {
-  res.cookie("name", req.params.name);
+app.get("/login", (req, res) => {
+  console.log(req.query);
+  res.cookie("name", req.query.name);
   res
     .status(200)
     .send(
-      '<html lang="en"><head><title>Login</title></head><body><a href="/hello">Say Hello</a> </body></html>'
+      `<html lang="en"><head><title>Login</title></head><body><a href="/hello">Say Hello</a> ${req.query.number} </body></html>`
     );
 });
 
